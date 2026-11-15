@@ -42,12 +42,12 @@ function regionName(region: Region): string {
 }
 
 function getIntensityColor(value: number | null, min: number, max: number): string {
-    if (value == null || !Number.isFinite(value)) return '#94a3b8';
+    if (value == null || !Number.isFinite(value)) return 'var(--intensity-unknown)';
 
-    // A escala relativa vai de verde (menor intensidade) a vermelho (maior intensidade).
     const normalized = max === min ? 0.5 : (value - min) / (max - min);
-    const hue = 140 * (1 - Math.max(0, Math.min(1, normalized)));
-    return `hsl(${hue} 78% 52%)`;
+    if (normalized < 0.34) return 'var(--intensity-low)';
+    if (normalized < 0.67) return 'var(--intensity-mid)';
+    return 'var(--intensity-high)';
 }
 
 function intersects(
@@ -282,7 +282,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
         <div className="space-y-3">
             <div
                 ref={mapRef}
-                className="relative aspect-[2/1] w-full overflow-hidden rounded-lg border border-white/10 bg-[#172a33]"
+                className="relative aspect-[2/1] w-full overflow-hidden rounded-lg border border-border bg-[var(--map-surface)]"
                 role="group"
                 aria-label="Mapa-múndi com as regiões monitoradas"
             >
@@ -318,7 +318,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
                         {points.map((point) => (
                             <div key={point.region.code}>
                                 <span
-                                    className="absolute z-10 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-white shadow-[0_0_12px_currentColor]"
+                                    className="absolute z-10 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[var(--map-marker-outline)] shadow-[0_0_12px_currentColor]"
                                     style={{
                                         left: `${(point.x / size.width) * 100}%`,
                                         top: `${(point.y / size.height) * 100}%`,
@@ -330,7 +330,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
                                     title={`${point.name} · ${formatIntensity(point.region.gco2ePerKwh)}`}
                                 />
                                 <span
-                                    className="absolute z-10 flex h-[22px] items-center rounded-md border border-white/15 bg-[#111720]/90 px-2 text-[11px] font-medium leading-none text-white shadow-lg backdrop-blur-sm"
+                                    className="theme-map-label absolute z-10 flex h-[22px] items-center rounded-md border px-2 text-[11px] font-medium leading-none shadow-lg backdrop-blur-sm"
                                     style={{
                                         left: `${(point.labelX / size.width) * 100}%`,
                                         top: `${(point.labelY / size.height) * 100}%`,
@@ -346,7 +346,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
                 )}
 
                 {points.length === 0 && (
-                    <p className="absolute inset-0 grid place-items-center bg-[#111720]/35 px-4 text-center text-sm text-white/75">
+                    <p className="theme-map-empty absolute inset-0 grid place-items-center px-4 text-center text-sm">
                         Nenhuma região possui coordenadas válidas para exibição.
                     </p>
                 )}
@@ -360,7 +360,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
                         className="h-2 w-24 rounded-full"
                         style={{
                             background:
-                                'linear-gradient(90deg, hsl(140 78% 52%), hsl(70 78% 52%), hsl(0 78% 52%))',
+                                'linear-gradient(90deg, var(--intensity-low), var(--intensity-mid), var(--intensity-high))',
                         }}
                     />
                     <span>Maior intensidade</span>
@@ -372,7 +372,7 @@ export function RegionsMap2D({ regions }: RegionsMap2DProps) {
                 )}
                 {points.some((point) => point.region.gco2ePerKwh == null) && (
                     <span className="inline-flex items-center gap-1.5">
-                        <span aria-hidden="true" className="size-2 rounded-full bg-slate-400" />
+                        <span aria-hidden="true" className="size-2 rounded-full bg-intensity-unknown" />
                         Sem fator de carbono
                     </span>
                 )}

@@ -56,7 +56,7 @@ function FilterSelect({ value, options, onChange }: FilterSelectProps) {
             {open && (
                 <div
                     ref={pickerRef}
-                    className="absolute left-0 top-full z-[60] mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-border bg-background p-2 shadow-xl shadow-black/30"
+                    className="absolute left-0 top-full z-[60] mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-border bg-background p-2 shadow-[var(--shadow-popover)]"
                 >
                     <div className="flex flex-col gap-1">
                         {options.map((option) => {

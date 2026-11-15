@@ -20,12 +20,12 @@ export function ServiceList({ services }: ServiceListProps) {
     const navigate = useNavigate();
 
     return (
-        <div className="overflow-hidden rounded-xl border border-white/10 bg-card shadow-sm">
+        <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
             <div className="overflow-x-auto">
                 <table className="w-full min-w-[1100px] text-sm">
                     <caption className="sr-only">Serviços monitorados</caption>
 
-                    <thead className="border-b border-white/10 bg-white/[0.035]">
+                    <thead className="theme-table-head border-b border-border">
                         <tr>
                             <th scope="col" className={headClass}>
                                 Serviço
@@ -60,12 +60,12 @@ export function ServiceList({ services }: ServiceListProps) {
                         </tr>
                     </thead>
 
-                    <tbody className="divide-y divide-white/[0.06]">
+                    <tbody className="divide-y divide-border">
                         {services.map((service) => (
                             <tr
                                 key={service.id}
                                 onClick={() => navigate(`/servicos/${service.id}`)}
-                                className="cursor-pointer transition-colors duration-150 hover:bg-white/[0.035]"
+                                className="theme-table-row cursor-pointer transition-colors duration-150"
                             >
                                 <td className={cellClass}>
                                     <RouterLink

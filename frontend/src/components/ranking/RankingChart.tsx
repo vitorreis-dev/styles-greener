@@ -36,7 +36,7 @@ export function RankingChart({ criterion, items }: RankingChartProps) {
                                     <Link
                                         to={`/servicos/${item.externalId}`}
                                         aria-label={`Ver ${item.name}: ${formatRankingValue(criterion, item[criterion])}`}
-                                        className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 rounded-lg px-3 py-2 text-sm transition-colors duration-200 hover:bg-white/5 sm:grid-cols-[minmax(6rem,8rem)_minmax(0,1fr)_minmax(8rem,auto)] sm:gap-y-0"
+                                        className="group theme-surface-hover grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 rounded-lg px-3 py-2 text-sm transition-colors duration-200 sm:grid-cols-[minmax(6rem,8rem)_minmax(0,1fr)_minmax(8rem,auto)] sm:gap-y-0"
                                     >
                                         <span className="col-start-1 row-start-1 min-w-0 truncate font-medium text-foreground/80 transition-colors group-hover:text-foreground sm:font-normal sm:text-muted-foreground">
                                             {item.name}
@@ -46,9 +46,9 @@ export function RankingChart({ criterion, items }: RankingChartProps) {
                                             {formatRankingValue(criterion, item[criterion])}
                                         </span>
 
-                                        <div className="col-span-2 col-start-1 row-start-2 h-2.5 overflow-hidden rounded-full bg-secondary/70 ring-1 ring-white/5 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+                                            <div className="col-span-2 col-start-1 row-start-2 h-2.5 overflow-hidden rounded-full bg-secondary ring-1 ring-border sm:col-span-1 sm:col-start-2 sm:row-start-1">
                                             <div
-                                                className="h-full rounded-full bg-primary transition-[width,background-color] duration-500 ease-out group-hover:bg-[#a6d7d0]"
+                                                className="h-full rounded-full bg-primary transition-[width,background-color] duration-500 ease-out group-hover:bg-chart-1"
                                                 style={{ width: `${widthPercent}%` }}
                                             />
                                         </div>

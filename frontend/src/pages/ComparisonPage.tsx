@@ -205,17 +205,17 @@ export function ComparisonPage() {
                 )}
 
                 {erroComparacao && (
-                    <p className="text-sm text-red-400" role="alert">
+                    <p className="text-sm text-destructive" role="alert">
                         Erro ao executar comparação: {erroComparacao}
                     </p>
                 )}
 
                 {/* Aviso de alterações pendentes. */}
                 {comparacaoPendente && (
-                    <div className="flex items-start gap-3 rounded-xl border border-amber-500/30 bg-amber-500/5 p-4">
-                        <Info className="mt-0.5 size-5 shrink-0 text-amber-400" />
+                    <div className="theme-status status-warning flex items-start gap-3 rounded-xl border p-4">
+                        <Info className="mt-0.5 size-5 shrink-0" />
 
-                        <p className="text-sm text-slate-300">
+                        <p className="text-sm text-foreground">
                             Você alterou os serviços, o período ou a região de simulação. Os
                             resultados exibidos ainda correspondem à última comparação. Clique em
                             Comparar novamente para atualizar os dados.

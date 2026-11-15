@@ -22,7 +22,7 @@ function RegionMetric({
     return (
         <div className={align === 'right' ? 'text-right' : undefined}>
             <p className="text-xs text-muted-foreground">{label}</p>
-            <p className="mt-1 font-semibold tabular-nums text-white">{value}</p>
+            <p className="mt-1 font-semibold tabular-nums text-foreground">{value}</p>
         </div>
     );
 }
@@ -36,17 +36,17 @@ export function RegionCard({ region }: RegionCardProps) {
               })}%`;
 
     return (
-        <Card className="h-full bg-white/5 text-left text-white ring-white/10 transition-colors hover:bg-white/10">
+        <Card className="h-full text-left transition-colors hover:bg-accent/50">
             <CardHeader className="pb-0">
                 <div className="flex min-w-0 flex-wrap items-center gap-2">
                     <CardTitle className="min-w-0 text-lg">{regionTitle(region)}</CardTitle>
 
-                    <span className="shrink-0 rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs font-medium text-white/60">
+                    <span className="shrink-0 rounded-md border border-border bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
                         {region.code}
                     </span>
                 </div>
 
-                <p className="text-sm text-white/60">
+                <p className="text-sm text-muted-foreground">
                     {[region.region, region.country].filter(Boolean).join(', ')}
                 </p>
             </CardHeader>
@@ -67,11 +67,11 @@ export function RegionCard({ region }: RegionCardProps) {
                 />
 
                 {/* Quantidade de serviços. */}
-                <div className="col-span-2 border-t border-white/10 pt-3">
+                <div className="col-span-2 border-t border-border pt-3">
                     <RegionMetric label="Serviços" value={String(region.servicesCount)} />
 
                     {region.statusCounts.metricsMissing > 0 && (
-                        <p className="mt-1 text-xs text-amber-300">
+                        <p className="mt-1 text-xs text-status-warning">
                             {region.statusCounts.metricsMissing} sem métricas
                         </p>
                     )}

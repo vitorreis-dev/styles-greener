@@ -94,7 +94,7 @@ export function DashboardPage() {
                             </div>
 
                             {visibleServices.length === 0 ? (
-                                <div className="rounded-xl border border-white/10 bg-card px-4 py-10 text-center">
+                                <div className="rounded-xl border border-border bg-card px-4 py-10 text-center">
                                     <p className="text-sm text-muted-foreground">
                                         Nenhum serviço encontrado com esses filtros.
                                     </p>

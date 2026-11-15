@@ -10,7 +10,7 @@ export function DataSourceBadge({ source }: DataSourceBadgeProps) {
     return (
         <Badge
             variant="outline"
-            className="rounded-[var(--radius-sm)] border-dashed border-[var(--color-status-warning)] px-2 py-[2px] text-[11px] font-bold tracking-[0.08em] text-[var(--color-status-warning)]"
+            className="rounded-[var(--radius-sm)] border-dashed border-status-warning px-2 py-[2px] text-[11px] font-bold tracking-[0.08em] text-status-warning"
             title="Dados simulados: a API real está indisponível"
         >
             SIMULADO

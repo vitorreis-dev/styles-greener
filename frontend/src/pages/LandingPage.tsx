@@ -141,17 +141,17 @@ export function LandingPage() {
             : null;
 
     return (
-        <main className="relative bg-[radial-gradient(ellipse_at_50%_120%,#1b2630_0%,#111720_60%)] pt-0 pb-0 text-foreground">
+        <main className="theme-hero relative pt-0 pb-0 text-foreground">
             <section
                 id="sobre"
                 className="relative z-10 flex min-h-svh flex-col justify-center px-6 pt-[var(--header-h,4rem)] pb-32 md:px-12"
             >
                 <div className="mx-auto w-full max-w-6xl">
-                    <h1 className="bg-linear-to-r from-primary to-[#a6d7d0] bg-clip-text text-6xl font-extrabold text-transparent md:text-8xl">
+                    <h1 className="bg-linear-to-r from-primary to-(--brand-end) bg-clip-text text-6xl font-extrabold text-transparent md:text-8xl">
                         Green<span className="font-light">ER</span>
                     </h1>
 
-                    <p className="mt-6 max-w-2xl text-xl font-semibold leading-snug text-white md:text-3xl">
+                    <p className="mt-6 max-w-2xl text-xl font-semibold leading-snug text-foreground md:text-3xl">
                         Do consumo computacional ao impacto ambiental
                     </p>
 
@@ -215,7 +215,7 @@ export function LandingPage() {
             >
                 <div className="min-w-0">
                     {regionsLoading && (
-                        <p className="text-white/60">Carregando totais das últimas 24 horas...</p>
+                        <p className="text-muted-foreground">Carregando totais das últimas 24 horas...</p>
                     )}
                     <ExploreSection
                         rotateLeft={rotateLeft}

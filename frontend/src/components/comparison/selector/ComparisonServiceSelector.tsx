@@ -34,7 +34,7 @@ interface ComparisonServiceSelectorProps {
 
 const MAX_SERVICOS = 5;
 
-const CORES = ['#60A5FA', '#34D399', '#A78BFA', '#FB7185', '#2DD4BF'];
+const CORES = [1, 2, 3, 4, 5].map((index) => `var(--chart-${index})`);
 
 export function ComparisonServiceSelector({ onSelectionsChange }: ComparisonServiceSelectorProps) {
     const [servicosSelecionados, setServicosSelecionados] = useState<ServicoSelecionado[]>([]);
@@ -174,14 +174,14 @@ export function ComparisonServiceSelector({ onSelectionsChange }: ComparisonServ
         <section className="space-y-4">
             {/* Título da área. */}
             <div>
-                <h2 className="text-xl font-semibold text-slate-100">
+                <h2 className="text-xl font-semibold text-foreground">
                     Serviços selecionados{' '}
-                    <span className="text-sm font-normal text-slate-400">
+                    <span className="text-sm font-normal text-muted-foreground">
                         (máx. {MAX_SERVICOS})
                     </span>
                 </h2>
 
-                <p className="mt-1 text-sm text-slate-300">
+                <p className="mt-1 text-sm text-muted-foreground">
                     Selecione os serviços que deseja comparar.
                 </p>
             </div>
@@ -228,13 +228,13 @@ export function ComparisonServiceSelector({ onSelectionsChange }: ComparisonServ
                         aria-expanded={mostrarDisponiveis}
                         aria-controls="servicos-disponiveis"
                         onClick={() => setMostrarDisponiveis((atual) => !atual)}
-                        className="flex min-h-40 w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-700 bg-slate-950/50 p-4 text-slate-400 transition-colors duration-200 hover:border-teal-400/60 hover:bg-slate-900 hover:text-teal-300 disabled:cursor-not-allowed disabled:opacity-50"
+                        className="flex min-h-40 w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-border bg-card p-4 text-muted-foreground transition-colors duration-200 hover:border-primary/60 hover:bg-accent hover:text-primary disabled:cursor-not-allowed disabled:opacity-50"
                     >
-                        <Plus aria-hidden="true" className="size-7 text-teal-300" />
+                        <Plus aria-hidden="true" className="size-7 text-primary" />
 
                         <span className="font-medium">Adicionar serviço</span>
 
-                        <span className="text-xs text-slate-500">
+                        <span className="text-xs text-muted-foreground">
                             {servicosSelecionados.length}/{MAX_SERVICOS} selecionados
                         </span>
                     </button>
@@ -244,14 +244,14 @@ export function ComparisonServiceSelector({ onSelectionsChange }: ComparisonServ
                         <div
                             ref={servicosPickerRef}
                             id="servicos-disponiveis"
-                            className="absolute left-0 top-full z-50 mt-2 max-h-[min(28rem,70vh)] w-[min(24rem,calc(100vw-2rem))] overflow-y-auto rounded-xl border border-slate-700 bg-slate-950 p-2 text-slate-100 shadow-2xl shadow-black/40"
+                            className="absolute left-0 top-full z-50 mt-2 max-h-[min(28rem,70vh)] w-[min(24rem,calc(100vw-2rem))] overflow-y-auto rounded-xl border border-border bg-popover p-2 text-popover-foreground shadow-[var(--shadow-popover)]"
                         >
                             {isLoading ? (
                                 <p className="px-3 py-4 text-sm text-muted-foreground">
                                     Carregando serviços...
                                 </p>
                             ) : error && services.length === 0 ? (
-                                <p className="px-3 py-4 text-sm text-red-400">
+                                <p className="px-3 py-4 text-sm text-destructive">
                                     Não foi possível carregar os serviços: {error}
                                 </p>
                             ) : (

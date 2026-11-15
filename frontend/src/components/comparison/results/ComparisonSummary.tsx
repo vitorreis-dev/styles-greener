@@ -109,41 +109,41 @@ function TooltipColetas({
                 createPortal(
                     <div
                         role="tooltip"
-                        className="pointer-events-none fixed z-[9999] w-60 rounded-lg border border-slate-700 bg-slate-900 p-3 text-xs text-slate-300 shadow-2xl"
+                        className="pointer-events-none fixed z-[9999] w-60 rounded-lg border border-border bg-popover p-3 text-xs text-popover-foreground shadow-[var(--shadow-popover)]"
                         style={{
                             left: posicao.x,
                             top: posicao.y,
                         }}
                     >
-                        <strong className="mb-3 block text-slate-100">
+                        <strong className="mb-3 block text-foreground">
                             Detalhamento das coletas
                         </strong>
 
                         <div className="flex items-center justify-between gap-3 py-1">
                             <span className="flex items-center gap-2">
-                                <span className="size-2 rounded-full bg-teal-400" />
+                                <span className="size-2 rounded-full bg-primary" />
                                 Reais
                             </span>
 
-                            <strong className="text-slate-100">{estatisticas.reais}</strong>
+                            <strong className="text-foreground">{estatisticas.reais}</strong>
                         </div>
 
                         <div className="flex items-center justify-between gap-3 py-1">
                             <span className="flex items-center gap-2">
-                                <span className="size-2 rounded-full bg-amber-400" />
+                                <span className="size-2 rounded-full bg-status-estimated" />
                                 Estimadas
                             </span>
 
-                            <strong className="text-slate-100">{estatisticas.estimadas}</strong>
+                            <strong className="text-foreground">{estatisticas.estimadas}</strong>
                         </div>
 
                         <div className="flex items-center justify-between gap-3 py-1">
                             <span className="flex items-center gap-2">
-                                <span className="size-2 rounded-full bg-slate-500" />
+                                <span className="size-2 rounded-full bg-status-neutral" />
                                 Sem métricas
                             </span>
 
-                            <strong className="text-slate-100">{estatisticas.semMetricas}</strong>
+                            <strong className="text-foreground">{estatisticas.semMetricas}</strong>
                         </div>
                     </div>,
                     document.body,
@@ -255,16 +255,16 @@ export function ComparisonSummary({
         <section className="space-y-4">
             {/* Cabeçalho */}
             <div className="flex items-center gap-3">
-                <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-teal-400/10">
-                    <Leaf className="size-5 text-teal-300" aria-hidden="true" />
+                <div className="flex size-11 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                    <Leaf className="size-5 text-primary" aria-hidden="true" />
                 </div>
 
                 <div className="min-w-0 space-y-1">
-                    <h3 className="text-lg font-semibold text-slate-100">
+                    <h3 className="text-lg font-semibold text-foreground">
                         Resumo comparativo — {tituloMetrica}
                     </h3>
 
-                    <p className="text-xs text-slate-400 sm:text-sm">
+                    <p className="text-xs text-muted-foreground sm:text-sm">
                         O serviço de referência é comparado com a média dos demais serviços
                         selecionados.
                     </p>
@@ -318,7 +318,7 @@ export function ComparisonSummary({
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-2">
                                     <Star
-                                        className="size-4 fill-teal-400 text-teal-400"
+                                        className="size-4 fill-primary text-primary"
                                         aria-hidden="true"
                                     />
                                     Serviço de referência
@@ -360,7 +360,7 @@ export function ComparisonSummary({
                         <Card className="flex h-full min-h-0 min-w-0 flex-col justify-between">
                             <CardHeader>
                                 <CardTitle className="flex items-center gap-2">
-                                    <UsersRound className="size-5 shrink-0 text-slate-300" />
+                                    <UsersRound className="size-5 shrink-0 text-muted-foreground" />
                                     Média dos demais serviços
                                 </CardTitle>
                             </CardHeader>
@@ -392,7 +392,7 @@ export function ComparisonSummary({
                         <CardHeader>
                             <CardTitle className="flex items-center justify-between">
                                 Diferença percentual
-                                <Percent className="size-6 text-slate-300" />
+                                <Percent className="size-6 text-muted-foreground" />
                             </CardTitle>
                         </CardHeader>
 

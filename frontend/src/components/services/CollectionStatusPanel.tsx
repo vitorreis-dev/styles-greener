@@ -57,7 +57,7 @@ function AttemptBadge({
         : 'Sem tentativas';
     return (
         <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${service.result === 'success' ? 'bg-primary/10 text-primary' : service.result === 'pending' ? 'bg-white/5 text-muted-foreground' : 'bg-amber-400/10 text-amber-300'}`}
+            className={`theme-status inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium ${service.result === 'success' ? 'status-good' : service.result === 'pending' ? 'status-neutral' : 'status-warning'}`}
         >
             <Icon size={13} className="shrink-0" aria-hidden="true" />
             {label}
@@ -217,7 +217,7 @@ function MobileHistoryDialog({
             ref={dialogRef}
             onClose={onClose}
             aria-labelledby="mobile-history-title"
-            className="fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-1.5rem)] max-w-lg overscroll-contain overflow-y-auto rounded-2xl border bg-popover p-0 text-foreground shadow-2xl backdrop:bg-black/70"
+            className="theme-modal fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-1.5rem)] max-w-lg overscroll-contain overflow-y-auto rounded-2xl border bg-popover p-0 text-foreground shadow-[var(--shadow-popover)]"
         >
             <div className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b bg-popover p-4">
                 <h2 id="mobile-history-title" className="font-semibold">
@@ -227,7 +227,7 @@ function MobileHistoryDialog({
                     type="button"
                     aria-label="Fechar histórico"
                     onClick={onClose}
-                    className="flex size-11 shrink-0 items-center justify-center rounded-lg border hover:bg-white/5"
+                    className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-border theme-surface-hover"
                 >
                     <X size={20} />
                 </button>
@@ -282,7 +282,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
             count: data.summary.totalServices,
             note: 'Correspondentes à busca',
             icon: Activity,
-            color: 'text-cyan-300',
+            color: 'text-status-info',
             filter: 'all' as const,
         },
         {
@@ -298,7 +298,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
             count: data.summary.failedServices,
             note: 'Última tentativa com falha',
             icon: TriangleAlert,
-            color: 'text-amber-300',
+            color: 'text-status-warning',
             filter: 'failure' as const,
         },
         {
@@ -328,7 +328,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
                         type="button"
                         aria-pressed={query.result === filter}
                         onClick={() => onResult(filter)}
-                        className={`rounded-xl border bg-card p-3 text-left transition-colors hover:bg-white/10 sm:p-5 ${query.result === filter ? 'border-primary/40' : 'border-white/10'}`}
+                        className={`theme-surface-hover-strong rounded-xl border bg-card p-3 text-left transition-colors sm:p-5 ${query.result === filter ? 'border-primary/40' : 'border-border'}`}
                     >
                         <div className="flex items-center justify-between gap-2">
                             <span className="text-xs text-muted-foreground sm:text-sm">
@@ -430,7 +430,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
                         <tbody className="divide-y">
                             {data.items.map((service) => (
                                 <Fragment key={service.externalId}>
-                                    <tr className="hover:bg-white/[0.025]">
+                                    <tr className="theme-table-row border-b">
                                         <td className="px-5 py-4">
                                             <p className="font-medium">{service.name}</p>
                                             <p className="mt-1 text-xs text-muted-foreground">
@@ -516,7 +516,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
                             type="button"
                             disabled={isUpdating || data.pagination.page <= 1}
                             onClick={() => onPage(data.pagination.page - 1)}
-                            className="min-h-11 rounded-lg border px-3 py-2 text-sm hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-40"
+                            className="theme-surface-hover min-h-11 rounded-lg border border-border px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             Anterior
                         </button>
@@ -526,7 +526,7 @@ function CollectionStatusResults({ query, onResult, onPage }: ResultsProps) {
                                 isUpdating || data.pagination.page >= data.pagination.totalPages
                             }
                             onClick={() => onPage(data.pagination.page + 1)}
-                            className="min-h-11 rounded-lg border px-3 py-2 text-sm hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-40"
+                            className="theme-surface-hover min-h-11 rounded-lg border border-border px-3 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-40"
                         >
                             Próxima
                         </button>
@@ -591,7 +591,7 @@ function CollectionFilterSelect({ label, value, options, onChange }: CollectionF
             {open && (
                 <div
                     ref={pickerRef}
-                    className="absolute left-0 top-full z-[60] mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-border bg-background p-2 shadow-xl shadow-black/40"
+                    className="absolute left-0 top-full z-[60] mt-2 max-h-60 w-full overflow-y-auto rounded-lg border border-border bg-background p-2 shadow-[var(--shadow-popover)]"
                 >
                     <div className="flex flex-col gap-1">
                         {options.map((option) => {

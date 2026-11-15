@@ -7,11 +7,11 @@ interface ComparisonColorPickerProps {
 }
 
 const NOMES_CORES: Record<string, string> = {
-    '#60A5FA': 'Azul',
-    '#34D399': 'Verde',
-    '#A78BFA': 'Roxo',
-    '#FB7185': 'Rosa',
-    '#2DD4BF': 'Turquesa',
+    'var(--chart-1)': 'Menta',
+    'var(--chart-2)': 'Azul',
+    'var(--chart-3)': 'Sálvia',
+    'var(--chart-4)': 'Âmbar',
+    'var(--chart-5)': 'Ameixa',
 };
 
 export function ComparisonColorPicker({

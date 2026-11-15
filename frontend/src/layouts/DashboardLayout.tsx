@@ -88,7 +88,7 @@ function DashboardHeader({
                 <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 px-4 py-3 sm:gap-6 sm:px-6">
                     <NavLink
                         to="/"
-                        className="bg-linear-to-r from-primary to-[#a6d7d0] bg-clip-text text-xl font-extrabold text-transparent"
+                        className="bg-linear-to-r from-primary to-(--brand-end) bg-clip-text text-xl font-extrabold text-transparent"
                     >
                         Green<span className="font-light">ER</span>
                     </NavLink>
@@ -150,7 +150,7 @@ export function DashboardLayout() {
 
     return (
         <MonitoringProvider>
-            <div className="dark flex min-h-screen flex-col bg-background text-foreground">
+            <div className="flex min-h-screen flex-col bg-background text-foreground">
                 <DashboardHeader
                     key={pathname}
                     pathname={pathname}

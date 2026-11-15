@@ -68,10 +68,10 @@ export function ComparisonServiceCard({
 
     const statusCor =
         servico.active === undefined
-            ? 'bg-slate-500'
+            ? 'bg-status-neutral'
             : servico.active
-              ? 'bg-emerald-500'
-              : 'bg-red-500';
+              ? 'bg-status-good'
+              : 'bg-status-critical';
 
     return (
         <div className="space-y-2">
@@ -83,7 +83,7 @@ export function ComparisonServiceCard({
                                 className="flex size-11 shrink-0 items-center justify-center rounded-full"
                                 style={{ backgroundColor: cor }}
                             >
-                                <Server aria-hidden="true" className="size-5 text-white" />
+                                <Server aria-hidden="true" className="size-5 text-primary-foreground" />
                             </div>
 
                             <div className="min-w-0 flex-1 space-y-2">
@@ -99,20 +99,20 @@ export function ComparisonServiceCard({
                                                     : `Definir ${servico.name} como referência`
                                             }
                                             title="Definir serviço de referência"
-                                            className="shrink-0 rounded p-0.5 transition-colors hover:bg-slate-800"
+                                            className="shrink-0 rounded p-0.5 transition-colors hover:bg-accent"
                                         >
                                             <Star
                                                 aria-hidden="true"
                                                 className={`size-4 transition-colors ${
                                                     principal
-                                                        ? 'fill-teal-400 text-teal-400'
-                                                        : 'text-slate-400 hover:text-teal-300'
+                                                        ? 'fill-primary text-primary'
+                                                        : 'text-muted-foreground hover:text-primary'
                                                 }`}
                                             />
                                         </button>
 
                                         <h3
-                                            className="break-words text-sm font-semibold text-slate-100"
+                                            className="break-words text-sm font-semibold text-foreground"
                                             title={servico.name}
                                         >
                                             {servico.name}
@@ -120,7 +120,7 @@ export function ComparisonServiceCard({
                                     </div>
 
                                     {principal && (
-                                        <span className="shrink-0 rounded-full border border-teal-400/50 bg-teal-400/10 px-2 py-0.5 text-xs font-medium text-teal-300">
+                                        <span className="theme-status status-info shrink-0 rounded-full border px-2 py-0.5 text-xs font-medium">
                                             Referência
                                         </span>
                                     )}
@@ -130,25 +130,25 @@ export function ComparisonServiceCard({
                                 <div className="flex flex-wrap items-center gap-1.5 text-sm">
                                     <MapPin
                                         aria-hidden="true"
-                                        className="size-4 shrink-0 text-slate-400"
+                                        className="size-4 shrink-0 text-muted-foreground"
                                     />
 
                                     {nomeRegiao ? (
                                         <>
-                                            <span className="text-slate-300">{nomeRegiao}</span>
+                                            <span className="text-foreground">{nomeRegiao}</span>
 
                                             {regiaoSimulada !== null ? (
-                                                <span className="rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-xs text-amber-400">
+                                                <span className="theme-status status-estimated rounded-full border px-2 py-0.5 text-xs">
                                                     Simulada
                                                 </span>
                                             ) : (
-                                                <span className="text-xs text-slate-500">
+                                                <span className="text-xs text-muted-foreground">
                                                     (original)
                                                 </span>
                                             )}
                                         </>
                                     ) : (
-                                        <span className="text-slate-400">Região não informada</span>
+                                        <span className="text-muted-foreground">Região não informada</span>
                                     )}
                                 </div>
 
@@ -159,7 +159,7 @@ export function ComparisonServiceCard({
                                         className={`size-2.5 shrink-0 rounded-full ${statusCor}`}
                                     />
 
-                                    <span className="text-slate-300">{statusTexto}</span>
+                                    <span className="text-foreground">{statusTexto}</span>
                                 </div>
                             </div>
                         </div>
@@ -174,10 +174,10 @@ export function ComparisonServiceCard({
                                 type="button"
                                 onClick={() => setMostrarCores((atual) => !atual)}
                                 aria-expanded={mostrarCores}
-                                className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-slate-300 transition-colors hover:bg-slate-800 hover:text-teal-300"
+                                className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-foreground transition-colors hover:bg-accent hover:text-primary"
                             >
                                 <span
-                                    className="size-6 shrink-0 rounded-full border border-slate-700"
+                                    className="size-6 shrink-0 rounded-full border border-border"
                                     style={{ backgroundColor: cor }}
                                 />
 
@@ -197,7 +197,7 @@ export function ComparisonServiceCard({
                                 type="button"
                                 onClick={() => setMostrarRegioes((atual) => !atual)}
                                 aria-expanded={mostrarRegioes}
-                                className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-slate-300 transition-colors hover:bg-slate-800 hover:text-teal-300"
+                                className="flex items-center gap-2 rounded-md px-2 py-1 text-sm text-foreground transition-colors hover:bg-accent hover:text-primary"
                             >
                                 <MapPinned aria-hidden="true" className="size-4 shrink-0" />
 
@@ -218,7 +218,7 @@ export function ComparisonServiceCard({
                             onClick={onRemover}
                             aria-label={`Remover ${servico.name} da comparação`}
                             title="Remover serviço"
-                            className="ml-auto shrink-0 rounded-md p-1.5 text-slate-400 transition-colors hover:bg-slate-800 hover:text-red-400"
+                            className="ml-auto shrink-0 rounded-md p-1.5 text-muted-foreground transition-colors hover:bg-accent hover:text-destructive"
                         >
                             <X aria-hidden="true" className="size-4" />
                         </button>
@@ -229,7 +229,7 @@ export function ComparisonServiceCard({
                 {mostrarCores && (
                     <div
                         ref={corPickerRef}
-                        className="absolute left-0 top-full z-50 mt-2 w-56 max-w-[calc(100vw-2rem)] shadow-xl shadow-black/30"
+                        className="absolute left-0 top-full z-50 mt-2 w-56 max-w-[calc(100vw-2rem)] shadow-[var(--shadow-popover)]"
                     >
                         <ComparisonColorPicker
                             cores={cores}
@@ -245,7 +245,7 @@ export function ComparisonServiceCard({
                 {mostrarRegioes && (
                     <div
                         ref={regiaoPickerRef}
-                        className="absolute right-0 top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] shadow-xl shadow-black/30"
+                        className="absolute right-0 top-full z-50 mt-2 w-64 max-w-[calc(100vw-2rem)] shadow-[var(--shadow-popover)]"
                     >
                         <ComparisonRegionPicker
                             regioes={regioes}

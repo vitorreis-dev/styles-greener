@@ -228,7 +228,7 @@ export const GlobeMap2D = forwardRef<GlobeViewHandle, GlobeMap2DProps>(function 
         >
             <div
                 ref={frameRef}
-                className="absolute overflow-hidden rounded-xl border border-white/10 bg-[#172a33]"
+                className="absolute overflow-hidden rounded-xl border border-border bg-[var(--map-surface)]"
             >
                 <div
                     ref={mapRef}
@@ -244,7 +244,7 @@ export const GlobeMap2D = forwardRef<GlobeViewHandle, GlobeMap2DProps>(function 
                             <span
                                 key={`${tile}-${marker.id}`}
                                 aria-hidden="true"
-                                className="absolute block h-2.5 w-2.5 rounded-full border border-white/80"
+                                className="absolute block h-2.5 w-2.5 rounded-full border border-[var(--map-marker-outline)]"
                                 style={{
                                     left: `${(((marker.longitude + 180) / 360 + tile + 1) / 3) * 100}%`,
                                     top: `${((90 - marker.latitude) / 180) * 100}%`,

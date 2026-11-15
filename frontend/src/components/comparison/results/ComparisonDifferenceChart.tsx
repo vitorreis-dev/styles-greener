@@ -47,18 +47,21 @@ export function ComparisonDifferenceChart({
         },
     ];
 
-    const corReferencia = classificacao === 'indisponivel' ? '#64748B' : '#2DD4BF';
+    const corReferencia =
+        classificacao === 'indisponivel'
+            ? 'var(--status-neutral)'
+            : 'var(--comparison-reference)';
 
-    const corMedia = '#475569';
+    const corMedia = 'var(--comparison-remainder)';
 
     const corTexto =
         classificacao === 'acima'
-            ? 'text-rose-400'
+            ? 'text-status-critical'
             : classificacao === 'abaixo'
-              ? 'text-emerald-400'
+              ? 'text-status-good'
               : classificacao === 'igual'
-                ? 'text-slate-200'
-                : 'text-slate-400';
+                ? 'text-foreground'
+                : 'text-status-neutral';
 
     const IconeDirecao =
         classificacao === 'acima'
@@ -124,7 +127,7 @@ export function ComparisonDifferenceChart({
                         y1="19"
                         x2="50"
                         y2="49"
-                        stroke="#94A3B8"
+                        stroke="var(--grid-line)"
                         strokeWidth="0.45"
                         strokeDasharray="1.5 1.8"
                         opacity="0.65"
@@ -151,12 +154,12 @@ export function ComparisonDifferenceChart({
             </div>
 
             {/* Descrição com valor destacado */}
-            <p className="w-full text-center text-xs leading-relaxed text-slate-400">
+            <p className="w-full text-center text-xs leading-relaxed text-muted-foreground">
                 {valorDestaque !== null && valorDestaque !== undefined ? (
                     <>
                         {descricaoAntes}
 
-                        <strong className="font-bold text-slate-200">{valorDestaque}</strong>
+                        <strong className="font-bold text-foreground">{valorDestaque}</strong>
 
                         {descricaoDepois}
                     </>

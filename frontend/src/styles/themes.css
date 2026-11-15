@@ -1,0 +1,159 @@
+:root,
+:root[data-theme='mint'] {
+    color-scheme: light;
+
+    /* Brisa de menta: identidade e superfícies */
+    --background: #f2f8f5;
+    --foreground: #1d302e;
+    --card: #ffffff;
+    --card-foreground: #1d302e;
+    --popover: #ffffff;
+    --popover-foreground: #1d302e;
+    --primary: #268f80;
+    --primary-foreground: #f5fffb;
+    --secondary: #dceee9;
+    --secondary-foreground: #21433d;
+    --muted: #e8f2ef;
+    --muted-foreground: #5f7772;
+    --accent: #cce8e1;
+    --accent-foreground: #21433d;
+    --destructive: #c6534e;
+    --border: rgba(32, 86, 76, 0.16);
+    --input: rgba(32, 86, 76, 0.22);
+    --ring: #268f80;
+    --radius: 0.875rem;
+
+    /* Séries categóricas e indicadores */
+    --chart-1: #268f80;
+    --chart-2: #4b87ad;
+    --chart-3: #6a9a56;
+    --chart-4: #bb7a2f;
+    --chart-5: #9a6090;
+    --status-good: #287a4b;
+    --status-warning: #9a5b12;
+    --status-critical: #b33f3b;
+    --status-neutral: #667b78;
+    --status-info: #356f91;
+    --status-estimated: #a66b20;
+
+    /* Cores de dados com significado fixo */
+    --intensity-low: #568441;
+    --intensity-mid: #b47727;
+    --intensity-high: #b84e3f;
+    --intensity-unknown: #829995;
+    --comparison-reference: #268f80;
+    --comparison-remainder: #8fa9a3;
+
+    /* Mapa e decoração */
+    --map-surface: #26d99d;
+    --map-label: rgba(27, 58, 52, 0.92);
+    --map-label-foreground: #ffffff;
+    --map-marker-outline: #ffffff;
+    --globe-atmosphere: #268f80;
+    --globe-light: #f3fffb;
+    --globe-stars: #4b87ad;
+    --hero-start: #dff3ed;
+    --hero-end: #f2f8f5;
+    --brand-end: #7ac8b8;
+    --shadow-card: 0 10px 28px rgba(35, 83, 73, 0.1);
+    --shadow-popover: 0 18px 44px rgba(29, 64, 57, 0.18);
+    --overlay: rgba(22, 43, 39, 0.48);
+
+    /* Realces translúcidos usados por linhas, tabelas e controles */
+    --surface-hover: rgba(32, 86, 76, 0.055);
+    --surface-hover-strong: rgba(32, 86, 76, 0.1);
+    --surface-subtle: rgba(32, 86, 76, 0.035);
+    --grid-line: rgba(32, 86, 76, 0.14);
+
+    /* shadcn sidebar */
+    --sidebar: #e7f3ef;
+    --sidebar-foreground: #1d302e;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+}
+
+:root[data-theme='basalt'] {
+    color-scheme: dark;
+
+    /* Basalt: superfícies minerais escuras com acentos suaves */
+    --background: #18232a;
+    --foreground: #f4f8f5;
+    --card: #2b3a44;
+    --card-foreground: #f4f8f5;
+    --popover: #24323b;
+    --popover-foreground: #f4f8f5;
+    --primary: #79cfc2;
+    --primary-foreground: #122126;
+    --secondary: #374a55;
+    --secondary-foreground: #f4f8f5;
+    --muted: #2d3d47;
+    --muted-foreground: #bdc9ca;
+    --accent: #3d525d;
+    --accent-foreground: #f4f8f5;
+    --destructive: #ef9184;
+    --border: rgba(238, 248, 244, 0.18);
+    --input: rgba(238, 248, 244, 0.24);
+    --ring: #79cfc2;
+    --radius: 0.875rem;
+
+    /* Séries categóricas e indicadores */
+    --chart-1: #79cfc2;
+    --chart-2: #7db8dc;
+    --chart-3: #a8cb84;
+    --chart-4: #d5aa69;
+    --chart-5: #c49ac0;
+    --status-good: #79c994;
+    --status-warning: #d5aa69;
+    --status-critical: #df8978;
+    --status-neutral: #9dacb1;
+    --status-info: #7db8dc;
+    --status-estimated: #d5aa69;
+
+    /* Cores de dados com significado fixo */
+    --intensity-low: #a8cb84;
+    --intensity-mid: #d5aa69;
+    --intensity-high: #df8978;
+    --intensity-unknown: #9dacb1;
+    --comparison-reference: #79cfc2;
+    --comparison-remainder: #4a5d68;
+
+    /* Mapa e decoração */
+    --map-surface: #2b404a;
+    --map-label: rgba(24, 35, 42, 0.92);
+    --map-label-foreground: #f4f8f5;
+    --map-marker-outline: #f4f8f5;
+    --globe-atmosphere: #79cfc2;
+    --globe-light: #f3fffb;
+    --globe-stars: #bae6fd;
+    --hero-start: #3d505a;
+    --hero-end: #18232a;
+    --brand-end: #a8e1d8;
+    --shadow-card: 0 14px 34px rgba(7, 14, 18, 0.32);
+    --shadow-popover: 0 18px 44px rgba(7, 14, 18, 0.42);
+    --overlay: rgba(4, 10, 13, 0.68);
+
+    /* Realces translúcidos usados por linhas, tabelas e controles */
+    --surface-hover: rgba(238, 248, 244, 0.055);
+    --surface-hover-strong: rgba(238, 248, 244, 0.1);
+    --surface-subtle: rgba(238, 248, 244, 0.035);
+    --grid-line: rgba(238, 248, 244, 0.14);
+
+    /* shadcn sidebar */
+    --sidebar: #24323b;
+    --sidebar-foreground: #f4f8f5;
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--primary-foreground);
+    --sidebar-accent: var(--accent);
+    --sidebar-accent-foreground: var(--accent-foreground);
+    --sidebar-border: var(--border);
+    --sidebar-ring: var(--ring);
+}
+
+/*
+ * Para adicionar um tema, crie outro bloco [data-theme='nome'] e sobrescreva
+ * os mesmos tokens. Componentes não devem guardar cores específicas do tema.
+ */

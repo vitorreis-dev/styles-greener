@@ -35,6 +35,10 @@ export interface GlobeMarker {
     status: string;
 }
 
+function getThemeColor(token: string): string {
+    return getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+}
+
 export const GlobeView = forwardRef<GlobeViewHandle, GlobeViewProps>(function GlobeView(
     { autoRotate = true, stateRef, focusTarget, markers },
     ref,
@@ -131,7 +135,7 @@ export const GlobeView = forwardRef<GlobeViewHandle, GlobeViewProps>(function Gl
         const atmosphere = new THREE.Mesh(
             new THREE.SphereGeometry(1.12, 64, 64),
             new THREE.MeshBasicMaterial({
-                color: '#0ea5e9',
+                color: getThemeColor('--globe-atmosphere'),
                 transparent: true,
                 opacity: 0.12,
                 side: THREE.BackSide,
@@ -140,9 +144,9 @@ export const GlobeView = forwardRef<GlobeViewHandle, GlobeViewProps>(function Gl
 
         globe.add(atmosphere);
 
-        scene.add(new THREE.AmbientLight('#ffffff', 1.5));
+        scene.add(new THREE.AmbientLight(getThemeColor('--globe-light'), 1.5));
 
-        const sunlight = new THREE.DirectionalLight('#e0f2fe', 2.5);
+        const sunlight = new THREE.DirectionalLight(getThemeColor('--globe-light'), 2.5);
         sunlight.position.set(3, 2, 4);
         scene.add(sunlight);
 
@@ -167,7 +171,7 @@ export const GlobeView = forwardRef<GlobeViewHandle, GlobeViewProps>(function Gl
         const stars = new THREE.Points(
             starsGeometry,
             new THREE.PointsMaterial({
-                color: '#bae6fd',
+                color: getThemeColor('--globe-stars'),
                 size: 0.06,
                 transparent: true,
                 opacity: 0.8,

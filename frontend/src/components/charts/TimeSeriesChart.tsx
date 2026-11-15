@@ -109,7 +109,7 @@ export function TimeSeriesChart({ data, label, color, formatValue }: TimeSeriesC
                         x2={WIDTH - PAD.right}
                         y1={y(tick)}
                         y2={y(tick)}
-                        className="stroke-white/10"
+                        className="stroke-border"
                     />
                     <text
                         x={PAD.left - 8}
@@ -165,7 +165,7 @@ export function TimeSeriesChart({ data, label, color, formatValue }: TimeSeriesC
                         x2={pointX}
                         y1={PAD.top}
                         y2={bottom}
-                        className="stroke-white/30"
+                        className="stroke-foreground/35"
                         strokeDasharray="4 4"
                     />
                     <circle
@@ -182,7 +182,7 @@ export function TimeSeriesChart({ data, label, color, formatValue }: TimeSeriesC
                         width={TOOLTIP.width}
                         height={TOOLTIP.height}
                         rx={8}
-                        className="fill-popover stroke-white/15"
+                        className="fill-popover stroke-border"
                     />
                     <text
                         x={tooltipX + 12}

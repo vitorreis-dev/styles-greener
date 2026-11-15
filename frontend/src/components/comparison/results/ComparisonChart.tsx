@@ -202,7 +202,7 @@ export function ComparisonChart({
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <span
                                 className="size-2.5 shrink-0 rounded-full"
-                                style={{ backgroundColor: '#FBBF24' }}
+                                style={{ backgroundColor: 'var(--status-estimated)' }}
                                 aria-hidden="true"
                             />
 
@@ -229,8 +229,8 @@ export function ComparisonChart({
                         }}
                     >
                         <CartesianGrid
-                            stroke="currentColor"
-                            strokeOpacity={0.07}
+                            stroke="var(--grid-line)"
+                            strokeOpacity={1}
                             strokeDasharray="3 3"
                             horizontal
                             vertical
@@ -345,7 +345,7 @@ export function ComparisonChart({
                                         type="monotone"
                                         dataKey={chaveEstimativa}
                                         name={`${servico.name} (estimado)`}
-                                        stroke="#FBBF24"
+                                        stroke="var(--status-estimated)"
                                         strokeWidth={3}
                                         dot={(props) => {
                                             const { cx, cy, index } = props;
@@ -390,8 +390,8 @@ export function ComparisonChart({
                                                     cx={cx}
                                                     cy={cy}
                                                     r={5}
-                                                    fill="#FBBF24"
-                                                    stroke="#92400E"
+                                                    fill="var(--status-estimated)"
+                                                    stroke="var(--status-warning)"
                                                     strokeWidth={1.5}
                                                 />
                                             );

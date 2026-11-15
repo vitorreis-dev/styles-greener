@@ -5,20 +5,7 @@ interface CarbonIntensityChartProps {
     regions: Region[];
 }
 
-const BAR_COLORS = [
-    '#60A5FA',
-    '#34D399',
-    '#22D3EE',
-    '#A78BFA',
-    '#F472B6',
-    '#818CF8',
-    '#2DD4BF',
-    '#93C5FD',
-    '#6EE7B7',
-    '#C4B5FD',
-    '#38BDF8',
-    '#FB7185',
-];
+const BAR_COLORS = [1, 2, 3, 4, 5].map((index) => `var(--chart-${index})`);
 
 function regionName(region: Region): string {
     return region.city ?? region.region ?? region.code;
@@ -55,7 +42,7 @@ export function CarbonIntensityChart({ regions }: CarbonIntensityChartProps) {
                     <div
                         key={region.code}
                         role="listitem"
-                        className="group rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-white/5"
+                        className="group theme-surface-hover rounded-lg px-3 py-2 transition-colors duration-200"
                     >
                         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-2 sm:grid-cols-[minmax(6rem,8rem)_minmax(0,1fr)_minmax(8rem,auto)] sm:gap-y-0">
                             {/* Nome da região. */}
@@ -73,7 +60,7 @@ export function CarbonIntensityChart({ regions }: CarbonIntensityChartProps) {
 
                             {/* Barra proporcional. */}
                             <div
-                                className="col-span-2 col-start-1 row-start-2 h-2.5 overflow-hidden rounded-full bg-secondary/70 ring-1 ring-white/5 sm:col-span-1 sm:col-start-2 sm:row-start-1"
+                                className="col-span-2 col-start-1 row-start-2 h-2.5 overflow-hidden rounded-full bg-secondary ring-1 ring-border sm:col-span-1 sm:col-start-2 sm:row-start-1"
                                 role="meter"
                                 aria-label={`Intensidade de carbono de ${regionName(region)}`}
                                 aria-valuemin={0}
@@ -85,7 +72,7 @@ export function CarbonIntensityChart({ regions }: CarbonIntensityChartProps) {
                                     style={{
                                         width: `${percentage}%`,
                                         backgroundColor: color,
-                                        boxShadow: `0 0 10px ${color}55`,
+                                        boxShadow: `0 0 10px color-mix(in srgb, ${color} 35%, transparent)`,
                                     }}
                                 />
                             </div>

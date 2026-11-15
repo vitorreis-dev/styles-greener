@@ -30,7 +30,9 @@ export function StarsBackground() {
 
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
             ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = '#bae6fd';
+            ctx.fillStyle = getComputedStyle(canvas)
+                .getPropertyValue('--globe-stars')
+                .trim();
 
             stars.forEach((star) => {
                 ctx.globalAlpha = star.opacity;

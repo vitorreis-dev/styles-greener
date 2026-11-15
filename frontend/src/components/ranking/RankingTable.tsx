@@ -38,10 +38,10 @@ export function RankingTable({ criterion, items }: RankingTableProps) {
                 title="Classificação"
                 subtitle={`Totais somados no período considerado, ordenados por ${sortLabels[criterion]}, do maior para o menor.`}
             >
-                <div className="overflow-hidden rounded-xl border border-white/10 bg-white/[0.02]">
+                <div className="theme-table overflow-hidden rounded-xl border">
                     <div className="overflow-x-auto">
                         <table className="w-full min-w-lg text-sm sm:min-w-xl">
-                            <thead className="bg-white/[0.035]">
+                            <thead className="theme-table-head">
                                 <tr>
                                     {rankingColumns.map((column) => {
                                         const isSorted = column.criterion === criterion;
@@ -51,7 +51,7 @@ export function RankingTable({ criterion, items }: RankingTableProps) {
                                                 key={column.label}
                                                 scope="col"
                                                 aria-sort={isSorted ? 'descending' : undefined}
-                                                className={`whitespace-nowrap border-b border-white/10 px-4 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground ${
+                                                className={`whitespace-nowrap border-b border-border px-4 py-3.5 text-left text-[11px] font-semibold uppercase tracking-wider text-muted-foreground ${
                                                     column.className ?? ''
                                                 } ${isSorted ? 'text-primary' : ''}`}
                                             >
@@ -73,17 +73,17 @@ export function RankingTable({ criterion, items }: RankingTableProps) {
                                     return (
                                         <tr
                                             key={item.externalId}
-                                            className={`group transition-colors duration-150 hover:bg-white/[0.045] ${
+                                            className={`theme-table-row group border-b transition-colors duration-150 ${
                                                 !hasData ? 'opacity-60' : ''
                                             }`}
                                         >
                                             {/* Posição. */}
-                                            <td className="border-b border-white/[0.06] px-4 py-3.5 tabular-nums last:border-b-0">
+                                            <td className="border-b border-border px-4 py-3.5 tabular-nums last:border-b-0">
                                                 <span
                                                     className={`inline-flex size-7 items-center justify-center rounded-md border text-xs font-semibold ${
                                                         hasData
                                                             ? 'border-primary/20 bg-primary/[0.08] text-primary'
-                                                            : 'border-white/10 bg-white/[0.03] text-muted-foreground'
+                                                            : 'border-border bg-muted text-muted-foreground'
                                                     }`}
                                                 >
                                                     {item.position ?? '—'}
@@ -91,7 +91,7 @@ export function RankingTable({ criterion, items }: RankingTableProps) {
                                             </td>
 
                                             {/* Serviço. */}
-                                            <td className="border-b border-white/[0.06] px-4 py-3.5 last:border-b-0">
+                                            <td className="border-b border-border px-4 py-3.5 last:border-b-0">
                                                 <span className="font-medium text-foreground transition-colors group-hover:text-primary">
                                                     {item.name}
                                                 </span>
@@ -101,35 +101,35 @@ export function RankingTable({ criterion, items }: RankingTableProps) {
                                                 </span>
 
                                                 {!hasData && (
-                                                    <span className="mt-1.5 inline-block whitespace-nowrap rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[11px] text-muted-foreground sm:ml-2 sm:mt-0">
+                                                    <span className="mt-1.5 inline-block whitespace-nowrap rounded-full border border-border bg-muted px-2 py-0.5 text-[11px] text-muted-foreground sm:ml-2 sm:mt-0">
                                                         Sem dados no período
                                                     </span>
                                                 )}
                                             </td>
 
                                             {/* Região. */}
-                                            <td className="hidden border-b border-white/[0.06] px-4 py-3.5 text-muted-foreground last:border-b-0 sm:table-cell">
-                                                <span className="rounded-md border border-white/[0.07] bg-white/[0.025] px-2 py-1 text-xs">
+                                            <td className="hidden border-b border-border px-4 py-3.5 text-muted-foreground last:border-b-0 sm:table-cell">
+                                                <span className="rounded-md border border-border bg-muted px-2 py-1 text-xs">
                                                     {item.region.code}
                                                 </span>
                                             </td>
 
                                             {/* Energia. */}
                                             <td
-                                                className={`${valueClass(criterion === 'energyKwh')} border-b border-white/[0.06] last:border-b-0`}
+                                                className={`${valueClass(criterion === 'energyKwh')} border-b border-border last:border-b-0`}
                                             >
                                                 {formatEnergy(item.energyKwh)}
                                             </td>
 
                                             {/* Emissões. */}
                                             <td
-                                                className={`${valueClass(criterion === 'co2eGrams')} border-b border-white/[0.06] last:border-b-0`}
+                                                className={`${valueClass(criterion === 'co2eGrams')} border-b border-border last:border-b-0`}
                                             >
                                                 {formatCo2e(item.co2eGrams)}
                                             </td>
 
                                             {/* Coletas. */}
-                                            <td className="border-b border-white/[0.06] px-4 py-3.5 tabular-nums text-muted-foreground last:border-b-0">
+                                            <td className="border-b border-border px-4 py-3.5 tabular-nums text-muted-foreground last:border-b-0">
                                                 {item.sampleCount.toLocaleString('pt-BR')}
                                             </td>
                                         </tr>

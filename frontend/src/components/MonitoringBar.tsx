@@ -53,7 +53,7 @@ export function MonitoringBar() {
                 <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
                     <span
                         title={error ?? undefined}
-                        className={`inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-medium ${connected ? 'border-emerald-400/40 text-emerald-300' : 'border-destructive/40 text-destructive'}`}
+                        className={`theme-status inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-medium ${connected ? 'status-good' : 'status-critical'}`}
                     >
                         <span aria-hidden="true" className="size-1.5 rounded-full bg-current" />
                         {connected

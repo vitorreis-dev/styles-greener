@@ -24,10 +24,10 @@ export function AvailableServicesPicker({ servicos, onAdicionar }: AvailableServ
                             key={servico.id}
                             type="button"
                             onClick={() => onAdicionar(servico)}
-                            className="flex w-full min-w-0 items-center gap-3 rounded-lg border border-transparent px-3 py-3 text-left transition-colors hover:border-teal-500/30 hover:bg-teal-500/10"
+                            className="flex w-full min-w-0 items-center gap-3 rounded-lg border border-transparent px-3 py-3 text-left transition-colors hover:border-primary/30 hover:bg-accent"
                         >
                             <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-secondary">
-                                <Server aria-hidden="true" className="size-4 text-teal-400" />
+                                <Server aria-hidden="true" className="size-4 text-primary" />
                             </span>
 
                             <span className="min-w-0 flex-1">
@@ -46,7 +46,7 @@ export function AvailableServicesPicker({ servicos, onAdicionar }: AvailableServ
                                 </span>
                             </span>
 
-                            <span className="shrink-0 text-xs text-teal-400">Adicionar</span>
+                            <span className="shrink-0 text-xs text-primary">Adicionar</span>
                         </button>
                     );
                 })}

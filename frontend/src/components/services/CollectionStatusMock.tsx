@@ -315,7 +315,7 @@ function ResultBadge({ result }: { result: Result }) {
         result === 'success' ? CheckCircle2 : result === 'pending' ? Clock3 : TriangleAlert;
     return (
         <span
-            className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${result === 'success' ? 'bg-primary/10 text-primary' : result === 'pending' ? 'bg-white/5 text-muted-foreground' : 'bg-amber-400/10 text-amber-300'}`}
+            className={`theme-status inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium ${result === 'success' ? 'status-good' : result === 'pending' ? 'status-neutral' : 'status-warning'}`}
         >
             <Icon size={13} aria-hidden="true" />
             {labels[result]}
@@ -344,7 +344,7 @@ export function CollectionStatusMock() {
             count: scope.length,
             note: 'Nesta demonstração',
             icon: Activity,
-            color: 'text-cyan-300',
+            color: 'text-status-info',
             filter: 'all',
         },
         {
@@ -360,7 +360,7 @@ export function CollectionStatusMock() {
             count: scope.filter((s) => isFailure(s.result)).length,
             note: 'Última tentativa com falha',
             icon: TriangleAlert,
-            color: 'text-amber-300',
+            color: 'text-status-warning',
             filter: 'failed',
         },
         {
@@ -375,9 +375,9 @@ export function CollectionStatusMock() {
 
     return (
         <section aria-label="Demonstração do status de coleta" className="space-y-5">
-            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-cyan-300/20 bg-cyan-300/5 px-4 py-3 text-sm">
+            <div className="theme-status status-info flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3 text-sm">
                 <div>
-                    <span className="mr-2 rounded bg-cyan-300/15 px-2 py-1 text-xs font-semibold text-cyan-300">
+                    <span className="mr-2 rounded bg-status-info/10 px-2 py-1 text-xs font-semibold text-status-info">
                         DEMONSTRAÇÃO
                     </span>
                     <span className="text-muted-foreground">
@@ -395,7 +395,7 @@ export function CollectionStatusMock() {
                         type="button"
                         aria-pressed={resultFilter === filter}
                         onClick={() => setResultFilter(filter)}
-                        className={`rounded-xl border bg-card p-5 text-left transition-colors hover:bg-white/10 ${resultFilter === filter ? 'border-primary/40' : 'border-white/10'}`}
+                        className={`theme-surface-hover-strong rounded-xl border bg-card p-5 text-left transition-colors ${resultFilter === filter ? 'border-primary/40' : 'border-border'}`}
                     >
                         <div className="flex items-center justify-between gap-2">
                             <span className="text-sm text-muted-foreground">{label}</span>
@@ -473,7 +473,7 @@ export function CollectionStatusMock() {
                         <tbody className="divide-y">
                             {visible.map((service) => (
                                 <Fragment key={service.id}>
-                                    <tr className="hover:bg-white/[0.025]">
+                                    <tr className="theme-table-row border-b">
                                         <td className="px-5 py-4">
                                             <p className="font-medium">{service.name}</p>
                                             <p className="mt-1 text-xs text-muted-foreground">

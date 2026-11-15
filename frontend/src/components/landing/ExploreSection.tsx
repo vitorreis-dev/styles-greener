@@ -36,7 +36,7 @@ function regionTitle(region: Region): string {
 function Metric({ label, children }: { label: string; children: ReactNode }) {
     return (
         <div className="rounded-lg bg-black/20 p-3">
-            <p className="text-xs text-white/60">{label}</p>
+            <p className="text-xs text-muted-foreground">{label}</p>
             <div className="mt-1 font-semibold">{children}</div>
         </div>
     );
@@ -72,21 +72,21 @@ export function ExploreSection({
         <section className="relative z-10 min-w-0" aria-labelledby="explore-title">
             <div className="flex h-[calc(100svh-var(--header-h,4rem)-1.5rem)] min-h-[400px] flex-col gap-4">
                 <div className="flex items-center gap-3">
-                    <h2 id="explore-title" className="text-xl font-bold text-white md:text-2xl">
+                    <h2 id="explore-title" className="text-xl font-bold text-foreground md:text-2xl">
                         {showingServices
                             ? `Serviços de ${selectedRegion ? regionTitle(selectedRegion) : selectedCode}`
                             : 'Regiões monitoradas'}
                     </h2>
                     <DataSourceBadge source={dataSource} />
                 </div>
-                <p className="text-sm text-white/60">
+                <p className="text-sm text-muted-foreground">
                     {showingServices
                         ? 'Serviços monitorados nesta região e seus respectivos status.'
                         : 'Energia e emissões somam as amostras registradas nas últimas 24 horas em cada região.'}
                 </p>
 
                 <div
-                    className="mt-3 flex flex-nowrap items-center gap-2 overflow-x-auto text-white"
+                    className="mt-3 flex flex-nowrap items-center gap-2 overflow-x-auto text-foreground"
                     role="group"
                     aria-label="Controles do globo"
                 >
@@ -168,10 +168,10 @@ export function ExploreSection({
                             >
                                 <div className="flex items-center justify-between gap-3">
                                     <h3 className="text-lg font-semibold">{regionTitle(region)}</h3>
-                                    <span className="text-xs text-white/60">{region.code}</span>
+                                    <span className="text-xs text-muted-foreground">{region.code}</span>
                                 </div>
 
-                                <p className="mt-1 text-sm text-white/60">
+                                <p className="mt-1 text-sm text-muted-foreground">
                                     {[region.region, region.country].filter(Boolean).join(', ')}
                                 </p>
 
@@ -182,12 +182,12 @@ export function ExploreSection({
 
                                     <Metric label="Serviços monitorados">
                                         {region.servicesCount}
-                                        <p className="mt-1 text-xs font-normal text-white/60">
+                                        <p className="mt-1 text-xs font-normal text-muted-foreground">
                                             {region.statusCounts.available} disponíveis ·{' '}
                                             {region.statusCounts.unavailable} indisponíveis
                                         </p>
                                         {region.statusCounts.metricsMissing > 0 && (
-                                            <p className="mt-1 text-xs font-normal text-amber-300">
+                                        <p className="mt-1 text-xs font-normal text-status-warning">
                                                 {region.statusCounts.metricsMissing} sem métricas
                                             </p>
                                         )}
@@ -216,7 +216,7 @@ export function ExploreSection({
                                             {service.name}
                                         </h3>
 
-                                        <p className="mt-1 text-sm text-white/60">
+                                        <p className="mt-1 text-sm text-muted-foreground">
                                             {[
                                                 service.location?.city,
                                                 service.location?.region,

@@ -46,17 +46,17 @@ function ServiceDetail({ id }: { id: string }) {
         {
             title: 'CO₂e por coleta',
             key: 'co2ePerCollectionGrams',
-            color: '#34d399',
+            color: 'var(--chart-1)',
             unit: 'g CO₂e',
         },
         {
             title: 'Potência estimada',
             key: 'powerWatts',
-            color: '#60a5fa',
+            color: 'var(--chart-2)',
             unit: 'W',
         },
-        { title: 'Uso de CPU', key: 'cpuPercent', color: '#a78bfa', unit: '%' },
-        { title: 'Memória em uso', key: 'memoryGb', color: '#fbbf24', unit: 'GB' },
+        { title: 'Uso de CPU', key: 'cpuPercent', color: 'var(--chart-5)', unit: '%' },
+        { title: 'Memória em uso', key: 'memoryGb', color: 'var(--chart-4)', unit: 'GB' },
     ] as const;
     return (
         <PageShell>
